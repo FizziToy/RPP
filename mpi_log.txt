@@ -1,0 +1,177 @@
+MPI Gauss method log
+Matrix size: 2000
+Processes: 1
+
+Rows distribution:
+Process 0 takes rows from 0 to 1999 (2000 rows)
+
+----------------------------------------
+Step k = 0
+Pivot row owner: process 0
+Pivot row was broadcasted from process 0
+Pivot element A[0][0] = 11020
+Pivot b[0] = 91
+
+Process 0 processed row 1: factor = 0.000453721, A[1][0] 5 -> 0, b[1] 1 -> 0.958711
+Process 0 processed row 2: factor = 0.000725953, A[2][0] 8 -> 8.88178e-16, b[2] 91 -> 90.9339
+Process 0 processed row 3: factor = 0.000272232, A[3][0] 3 -> -4.44089e-16, b[3] 12 -> 11.9752
+Process 0 processed row 4: factor = 9.07441e-05, A[4][0] 1 -> 1.11022e-16, b[4] 63 -> 62.9917
+Process 0 processed row 5: factor = 0.000362976, A[5][0] 4 -> 4.44089e-16, b[5] 80 -> 79.967
+Process 0 processed row 6: factor = 0.000453721, A[6][0] 5 -> 0, b[6] 99 -> 98.9587
+Process 0 processed row 7: factor = 0.000362976, A[7][0] 4 -> 4.44089e-16, b[7] 95 -> 94.967
+Process 0 processed row 8: factor = 0.000635209, A[8][0] 7 -> 0, b[8] 68 -> 67.9422
+Process 0 processed row 9: factor = 9.07441e-05, A[9][0] 1 -> 1.11022e-16, b[9] 96 -> 95.9917
+
+----------------------------------------
+Step k = 1
+Pivot row owner: process 0
+Pivot row was broadcasted from process 0
+Pivot element A[1][1] = 11045
+Pivot b[1] = 0.958711
+
+Process 0 processed row 2: factor = 0.000452102, A[2][1] 4.99347 -> 0, b[2] 90.9339 -> 90.9335
+Process 0 processed row 3: factor = 0.000271394, A[3][1] 2.99755 -> 0, b[3] 11.9752 -> 11.975
+Process 0 processed row 4: factor = 0.000362081, A[4][1] 3.99918 -> 0, b[4] 62.9917 -> 62.9914
+Process 0 processed row 5: factor = 0.000633475, A[5][1] 6.99673 -> 0, b[5] 79.967 -> 79.9664
+Process 0 processed row 6: factor = 0.000452324, A[6][1] 4.99592 -> 0, b[6] 98.9587 -> 98.9583
+Process 0 processed row 7: factor = 9.0243e-05, A[7][1] 0.996733 -> 0, b[7] 94.967 -> 94.9669
+Process 0 processed row 8: factor = 0.000542715, A[8][1] 5.99428 -> -8.88178e-16, b[8] 67.9422 -> 67.9417
+Process 0 processed row 9: factor = 0.000362081, A[9][1] 3.99918 -> 0, b[9] 95.9917 -> 95.9914
+Process 0 processed row 10: factor = 0.000452176, A[10][1] 4.99428 -> 0, b[10] 55.9422 -> 55.9418
+
+----------------------------------------
+Step k = 2
+Pivot row owner: process 0
+Pivot row was broadcasted from process 0
+Pivot element A[2][2] = 11148
+Pivot b[2] = 90.9335
+
+Process 0 processed row 3: factor = 8.92878e-05, A[3][2] 0.99538 -> 0, b[3] 11.975 -> 11.9668
+Process 0 processed row 4: factor = 0.000537881, A[4][2] 5.99629 -> -8.88178e-16, b[4] 62.9914 -> 62.9425
+Process 0 processed row 5: factor = 0.000447764, A[5][2] 4.99167 -> 0, b[5] 79.9664 -> 79.9256
+Process 0 processed row 6: factor = 0.000627225, A[6][2] 6.9923 -> 0, b[6] 98.9583 -> 98.9012
+Process 0 processed row 7: factor = 0.000537856, A[7][2] 5.99601 -> 0, b[7] 94.9669 -> 94.918
+Process 0 processed row 8: factor = 0.000627014, A[8][2] 6.98994 -> 0, b[8] 67.9417 -> 67.8847
+Process 0 processed row 9: factor = 0.000806987, A[9][2] 8.99629 -> 0, b[9] 95.9914 -> 95.918
+Process 0 processed row 10: factor = 0.000357972, A[10][2] 3.99067 -> 0, b[10] 55.9418 -> 55.9092
+Process 0 processed row 11: factor = 0.000896137, A[11][2] 9.99013 -> 0, b[11] 32.958 -> 32.8765
+
+----------------------------------------
+Step k = 3
+Pivot row owner: process 0
+Pivot row was broadcasted from process 0
+Pivot element A[3][3] = 11102
+Pivot b[3] = 11.9668
+
+Process 0 processed row 4: factor = 0.000720153, A[4][3] 7.99514 -> 0, b[4] 62.9425 -> 62.9339
+Process 0 processed row 5: factor = 0.000719965, A[5][3] 7.99305 -> 0, b[5] 79.9256 -> 79.917
+Process 0 processed row 6: factor = 0.000719998, A[6][3] 7.99342 -> 0, b[6] 98.9012 -> 98.8926
+Process 0 processed row 7: factor = 0.000630201, A[7][3] 6.99649 -> 0, b[7] 94.918 -> 94.9104
+Process 0 processed row 8: factor = 0.000900057, A[8][3] 9.99243 -> 0, b[8] 67.8847 -> 67.8739
+Process 0 processed row 9: factor = 8.95388e-05, A[9][3] 0.99406 -> 0, b[9] 95.918 -> 95.9169
+Process 0 processed row 10: factor = 0.000900211, A[10][3] 9.99413 -> 0, b[10] 55.9092 -> 55.8984
+Process 0 processed row 11: factor = 0.000269361, A[11][3] 2.99045 -> 0, b[11] 32.8765 -> 32.8733
+Process 0 processed row 12: factor = 8.97325e-05, A[12][3] 0.99621 -> 0, b[12] 26.967 -> 26.9659
+
+----------------------------------------
+Step k = 4
+Pivot row owner: process 0
+Pivot row was broadcasted from process 0
+Pivot element A[4][4] = 10935
+Pivot b[4] = 62.9339
+
+Process 0 processed row 5: factor = 0.000181425, A[5][4] 1.98387 -> 0, b[5] 79.917 -> 79.9056
+Process 0 processed row 6: factor = 0.000547216, A[6][4] 5.9838 -> -8.88178e-16, b[6] 98.8926 -> 98.8582
+Process 0 processed row 7: factor = 0.000913468, A[7][4] 9.98876 -> 0, b[7] 94.9104 -> 94.8529
+Process 0 processed row 8: factor = 0.000821309, A[8][4] 8.981 -> 0, b[8] 67.8739 -> 67.8222
+Process 0 processed row 9: factor = 0.000181921, A[9][4] 1.9893 -> -2.22045e-16, b[9] 95.9169 -> 95.9055
+Process 0 processed row 10: factor = 0.000272882, A[10][4] 2.98397 -> 0, b[10] 55.8984 -> 55.8813
+Process 0 processed row 11: factor = 0.000912924, A[11][4] 9.98281 -> 0, b[11] 32.8733 -> 32.8159
+Process 0 processed row 12: factor = 0.000548113, A[12][4] 5.9936 -> 8.88178e-16, b[12] 26.9659 -> 26.9314
+Process 0 processed row 13: factor = 8.98771e-05, A[13][4] 0.982805 -> -1.11022e-16, b[13] 90.908 -> 90.9023
+
+----------------------------------------
+Step k = 5
+Pivot row owner: process 0
+Pivot row was broadcasted from process 0
+Pivot element A[5][5] = 10840
+Pivot b[5] = 79.9056
+
+Process 0 processed row 6: factor = 0.000736134, A[6][5] 7.97969 -> 0, b[6] 98.8582 -> 98.7994
+Process 0 processed row 7: factor = 0.000274883, A[7][5] 2.97972 -> 0, b[7] 94.8529 -> 94.831
+Process 0 processed row 8: factor = 8.98996e-05, A[8][5] 0.97451 -> 0, b[8] 67.8222 -> 67.815
+Process 0 processed row 9: factor = 0.000644587, A[9][5] 6.98732 -> -8.88178e-16, b[9] 95.9055 -> 95.854
+Process 0 processed row 10: factor = 0.000736452, A[10][5] 7.98313 -> 0, b[10] 55.8813 -> 55.8224
+Process 0 processed row 11: factor = 0.000182126, A[11][5] 1.97424 -> 0, b[11] 32.8159 -> 32.8013
+Process 0 processed row 12: factor = 9.12397e-05, A[12][5] 0.989037 -> 0, b[12] 26.9314 -> 26.9241
+Process 0 processed row 13: factor = 0.000828824, A[13][5] 8.98444 -> 0, b[13] 90.9023 -> 90.8361
+Process 0 processed row 14: factor = 0.000920491, A[14][5] 9.9781 -> 0, b[14] 63.8302 -> 63.7567
+
+----------------------------------------
+Step k = 6
+Pivot row owner: process 0
+Pivot row was broadcasted from process 0
+Pivot element A[6][6] = 11062
+Pivot b[6] = 98.7994
+
+Process 0 processed row 7: factor = 0.000721615, A[7][6] 7.98249 -> -8.88178e-16, b[7] 94.831 -> 94.7597
+Process 0 processed row 8: factor = 0.000811634, A[8][6] 8.97828 -> 0, b[8] 67.815 -> 67.7348
+Process 0 processed row 9: factor = 0.00036049, A[9][6] 3.98774 -> -4.44089e-16, b[9] 95.854 -> 95.8184
+Process 0 processed row 10: factor = 0.000721426, A[10][6] 7.98039 -> 0, b[10] 55.8224 -> 55.7511
+Process 0 processed row 11: factor = 0.000359945, A[11][6] 3.9817 -> 4.44089e-16, b[11] 32.8013 -> 32.7657
+Process 0 processed row 12: factor = 0.000632194, A[12][6] 6.99332 -> 0, b[12] 26.9241 -> 26.8616
+Process 0 processed row 13: factor = 0.000269503, A[13][6] 2.98123 -> 0, b[13] 90.8361 -> 90.8095
+Process 0 processed row 14: factor = 0.00081168, A[14][6] 8.97878 -> 0, b[14] 63.7567 -> 63.6765
+Process 0 processed row 15: factor = 0.000270359, A[15][6] 2.9907 -> 4.44089e-16, b[15] 86.8963 -> 86.8695
+
+----------------------------------------
+Step k = 7
+Pivot row owner: process 0
+Pivot row was broadcasted from process 0
+Pivot element A[7][7] = 11069
+Pivot b[7] = 94.7597
+
+Process 0 processed row 8: factor = 0.000720072, A[8][7] 7.97046 -> 0, b[8] 67.7348 -> 67.6666
+Process 0 processed row 9: factor = 0.000269546, A[9][7] 2.9836 -> -4.44089e-16, b[9] 95.8184 -> 95.7928
+Process 0 processed row 10: factor = 0.000629928, A[10][7] 6.97265 -> 0, b[10] 55.7511 -> 55.6914
+Process 0 processed row 11: factor = 0.000630012, A[11][7] 6.97359 -> 0, b[11] 32.7657 -> 32.706
+Process 0 processed row 12: factor = 0.000360136, A[12][7] 3.98633 -> -4.44089e-16, b[12] 26.8616 -> 26.8275
+Process 0 processed row 13: factor = 0.000810957, A[13][7] 8.97646 -> 0, b[13] 90.8095 -> 90.7326
+Process 0 processed row 14: factor = 0.000719886, A[14][7] 7.9684 -> -8.88178e-16, b[14] 63.6765 -> 63.6083
+Process 0 processed row 15: factor = 0.00081192, A[15][7] 8.98713 -> 0, b[15] 86.8695 -> 86.7926
+Process 0 processed row 16: factor = 0.000630644, A[16][7] 6.98058 -> 0, b[16] 18.8155 -> 18.7558
+
+----------------------------------------
+Step k = 8
+Pivot row owner: process 0
+Pivot row was broadcasted from process 0
+Pivot element A[8][8] = 11138
+Pivot b[8] = 67.6666
+
+Process 0 processed row 9: factor = 8.89569e-05, A[9][8] 0.9908 -> 0, b[9] 95.7928 -> 95.7868
+Process 0 processed row 10: factor = 0.000626675, A[10][8] 6.97989 -> 0, b[10] 55.6914 -> 55.649
+Process 0 processed row 11: factor = 0.000806441, A[11][8] 8.98212 -> 0, b[11] 32.706 -> 32.6515
+Process 0 processed row 12: factor = 0.000268432, A[12][8] 2.98979 -> -4.44089e-16, b[12] 26.8275 -> 26.8093
+Process 0 processed row 13: factor = 0.000178004, A[13][8] 1.98261 -> 0, b[13] 90.7326 -> 90.7206
+Process 0 processed row 14: factor = 0.000896007, A[14][8] 9.9797 -> 0, b[14] 63.6083 -> 63.5476
+Process 0 processed row 15: factor = 0.000537823, A[15][8] 5.99025 -> 0, b[15] 86.7926 -> 86.7562
+Process 0 processed row 16: factor = 0.000358075, A[16][8] 3.98823 -> 0, b[16] 18.7558 -> 18.7316
+Process 0 processed row 17: factor = 0.00035748, A[17][8] 3.98161 -> -4.44089e-16, b[17] 53.6956 -> 53.6714
+
+----------------------------------------
+Step k = 9
+Pivot row owner: process 0
+Pivot row was broadcasted from process 0
+Pivot element A[9][9] = 11122
+Pivot b[9] = 95.7868
+
+Process 0 processed row 10: factor = 0.000356881, A[10][9] 3.96923 -> 0, b[10] 55.649 -> 55.6149
+Process 0 processed row 11: factor = 0.000716717, A[11][9] 7.97131 -> -8.88178e-16, b[11] 32.6515 -> 32.5828
+Process 0 processed row 12: factor = 0.000807938, A[12][9] 8.98587 -> 0, b[12] 26.8093 -> 26.732
+Process 0 processed row 13: factor = 0.000177331, A[13][9] 1.97227 -> 0, b[13] 90.7206 -> 90.7036
+Process 0 processed row 14: factor = 0.000805737, A[14][9] 8.96139 -> 0, b[14] 63.5476 -> 63.4705
+Process 0 processed row 15: factor = 0.000627691, A[15][9] 6.98117 -> 0, b[15] 86.7562 -> 86.6961
+Process 0 processed row 16: factor = 0.000447744, A[16][9] 4.9798 -> 0, b[16] 18.7316 -> 18.6887
+Process 0 processed row 17: factor = 0.000447256, A[17][9] 4.97438 -> 0, b[17] 53.6714 -> 53.6286
+Process 0 processed row 18: factor = 0.00017718, A[18][9] 1.97059 -> 0, b[18] 24.6684 -> 24.6514
+

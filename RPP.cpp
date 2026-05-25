@@ -4,6 +4,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <mpi.h>
+#include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -15,7 +17,7 @@ int main(int argc, char* argv[])
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
 
-    int N = 3000;
+    int N = 2000;
 
     vector<double> A;
     vector<double> b(N);
@@ -51,6 +53,29 @@ int main(int argc, char* argv[])
 
     vector<double> localA(localRows * N);
     vector<double> localB(localRows);
+
+    ofstream logFile;
+
+    if (rank == 0)
+    {
+        logFile.open("mpi_log.txt");
+
+        logFile << "MPI Gauss method log" << endl;
+        logFile << "Matrix size: " << N << endl;
+        logFile << "Processes: " << size << endl << endl;
+
+        logFile << "Rows distribution:" << endl;
+
+        for (int p = 0; p < size; p++)
+        {
+            logFile << "Process " << p
+                << " takes rows from " << displsRows[p]
+                << " to " << displsRows[p] + rows[p] - 1
+                << " (" << rows[p] << " rows)" << endl;
+        }
+
+        logFile << endl;
+    }
 
     if (rank == 0)
     {
@@ -109,7 +134,7 @@ int main(int argc, char* argv[])
     );
 
     vector<double> pivotRow(N);
-    double pivotB;
+    double pivotB = 0;
 
     for (int k = 0; k < N; k++)
     {
@@ -122,6 +147,13 @@ int main(int argc, char* argv[])
                 owner = p;
                 break;
             }
+        }
+
+        if (rank == 0 && k < 10)
+        {
+            logFile << "----------------------------------------" << endl;
+            logFile << "Step k = " << k << endl;
+            logFile << "Pivot row owner: process " << owner << endl;
         }
 
         if (rank == owner)
@@ -139,12 +171,24 @@ int main(int argc, char* argv[])
         MPI_Bcast(pivotRow.data(), N, MPI_DOUBLE, owner, MPI_COMM_WORLD);
         MPI_Bcast(&pivotB, 1, MPI_DOUBLE, owner, MPI_COMM_WORLD);
 
+        if (rank == 0 && k < 10)
+        {
+            logFile << "Pivot row was broadcasted from process " << owner << endl;
+            logFile << "Pivot element A[" << k << "][" << k << "] = " << pivotRow[k] << endl;
+            logFile << "Pivot b[" << k << "] = " << pivotB << endl << endl;
+        }
+
+        stringstream localLog;
+
         for (int i = 0; i < localRows; i++)
         {
             int globalRow = firstRow + i;
 
             if (globalRow > k)
             {
+                double oldB = localB[i];
+                double oldAik = localA[i * N + k];
+
                 double factor = localA[i * N + k] / pivotRow[k];
 
                 for (int j = k; j < N; j++)
@@ -153,10 +197,78 @@ int main(int argc, char* argv[])
                 }
 
                 localB[i] -= factor * pivotB;
+
+                if (k < 10 && globalRow < k + 10)
+                {
+                    localLog << "Process " << rank
+                        << " processed row " << globalRow
+                        << ": factor = " << factor
+                        << ", A[" << globalRow << "][" << k << "] "
+                        << oldAik << " -> " << localA[i * N + k]
+                        << ", b[" << globalRow << "] "
+                        << oldB << " -> " << localB[i]
+                        << endl;
+                }
             }
         }
 
         MPI_Barrier(MPI_COMM_WORLD);
+
+        string localLogStr = localLog.str();
+        int localLogSize = localLogStr.size();
+
+        vector<int> logSizes(size);
+        vector<int> logDispls(size);
+
+        MPI_Gather(
+            &localLogSize,
+            1,
+            MPI_INT,
+            logSizes.data(),
+            1,
+            MPI_INT,
+            0,
+            MPI_COMM_WORLD
+        );
+
+        vector<char> allLogs;
+
+        if (rank == 0)
+        {
+            logDispls[0] = 0;
+
+            for (int p = 1; p < size; p++)
+            {
+                logDispls[p] = logDispls[p - 1] + logSizes[p - 1];
+            }
+
+            int totalLogSize = 0;
+
+            for (int p = 0; p < size; p++)
+            {
+                totalLogSize += logSizes[p];
+            }
+
+            allLogs.resize(totalLogSize);
+        }
+
+        MPI_Gatherv(
+            localLogStr.data(),
+            localLogSize,
+            MPI_CHAR,
+            rank == 0 ? allLogs.data() : nullptr,
+            logSizes.data(),
+            logDispls.data(),
+            MPI_CHAR,
+            0,
+            MPI_COMM_WORLD
+        );
+
+        if (rank == 0 && k < 10)
+        {
+            string resultLog(allLogs.begin(), allLogs.end());
+            logFile << resultLog << endl;
+        }
     }
 
     MPI_Gatherv(
@@ -202,9 +314,28 @@ int main(int argc, char* argv[])
 
     if (rank == 0)
     {
+        ofstream resultFile("result.txt");
+
+        resultFile << "Matrix size: " << N << endl;
+        resultFile << "Processes: " << size << endl;
+        resultFile << "Execution time: " << end - start << " sec" << endl << endl;
+
+        resultFile << "Result vector x:" << endl;
+
+        for (int i = 0; i < N; i++)
+        {
+            resultFile << "x[" << i << "] = " << x[i] << endl;
+        }
+
+        resultFile.close();
+
+        logFile.close();
+
         cout << "Matrix size: " << N << endl;
         cout << "Processes: " << size << endl;
         cout << "Execution time: " << end - start << " sec" << endl;
+        cout << "Results were written to result.txt" << endl;
+        cout << "Log was written to mpi_log.txt" << endl;
     }
 
     MPI_Finalize();
